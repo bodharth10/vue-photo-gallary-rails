@@ -1,0 +1,28 @@
+<h1 class="my-4">
+  <%= @product.name %>
+</h1>
+<p>
+  <%= link_to t('products.back'), products_path %>
+</p>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= image_tag @product.image, class: 'img-fluid' %>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="my-3">Project Description</h3>
+    <p>
+      <%= @product.description %>
+    </p>
+  </div>
+</div>
+
+<%
+  props = {
+    product: serialize('serializers/product', product: @product)
+  }.to_json
+%>
+
+<div class="vue-comments" data-props="<%= props %>"></div>
+<div class="vue-comment-form" data-props="<%= props %>"></div>

@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: vuex_app_development
+  username: postgres
+  host: localhost
+  password: root
+
+test: &test
+  <<: *default
+  database: vuex_app_test
+  username: postgres
+  password: root
+  host: localhost
+
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: vuex_app_production
+  username: postgres
+  password: root
+  host: localhost
+  port: 5432
